@@ -1,9 +1,16 @@
 #!/bin/bash
 # convert a bunch of pngs into an avi movie
 
+# If mencoder doesn't exist
+if ! hash mencoder 2>/dev/null; then
+    echo "ERROR: Install mencoder"
+    echo "Exiting..."
+    exit 1
+fi
+
 # If a video exists
 if [ -e "video/output.avi" ]; then
-    echo "\"video/output.avi\" already exists"
+    echo "ERROR: \"video/output.avi\" already exists"
     echo "Move or rename the file to run this program"
     echo "Exiting..."
     exit 1
